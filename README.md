@@ -2,8 +2,8 @@
 
 历年考试真题（与整理索引）资料库。首批计划收录：
 
-- 自考：英语（二）
-- 公共英语：PETS（全国公共英语等级考试）
+- [自考英语二（00015）](papers/shed/english-2/README.md)（目录缩写：**SHED**）
+- [公共英语 PETS（全国公共英语等级考试）](papers/pets/README.md)
 
 ## 重要说明（请先读）
 
@@ -17,11 +17,14 @@
 
 ```
 papers/
-  zikao/
+  shed/                    # SHED：自考（仓库约定的英文缩写）
     english-2/
       README.md
   pets/
     README.md
+    PETS-2/
+    PETS-3/
+      *.pdf                # 同等级真题平铺在同一目录（见 README）
 index/
   papers.csv
 scripts/
@@ -36,9 +39,9 @@ CODE_OF_CONDUCT.md
 ## 如何添加一套真题
 
 1. 选择考试目录：
-   - 自考英语（二）：`papers/zikao/english-2/`
-   - 公共英语 PETS：`papers/pets/`
-2. 将“可公开分发”的文件放在对应目录下（如：`YYYY-MM/`）。
+   - [自考英语二（00015）](papers/shed/english-2/README.md)（文件名中课程编码与原卷一致）：`papers/shed/english-2/`
+   - 公共英语 PETS：`papers/pets/PETS-{等级}/`
+2. 将“可公开分发”的文件放在对应目录下，命名：`年月（及需要时加日）-中文名.扩展名`（日期与主题名之间用 `-`；PETS 等可在中文名后用半角括号写英文简称，见 `papers/pets/README.md`）。自考英语二不设英文简称段，示例：`2023年10月-自考英语二（00015）.pdf`；源文件编码为 00013 则用 `（00013）`。同一场次多份顺延 `-01`、`-02`。
 3. 在 `index/papers.csv` 追加一行索引信息（推荐提供权威来源链接）。
 4. 运行索引校验（可选）：
 
@@ -54,4 +57,3 @@ python3 scripts/validate_index.py
 ## 贡献
 
 欢迎提交真题“索引”、勘误、目录整理与学习笔记。请先阅读 `CONTRIBUTING.md`。
-

@@ -51,16 +51,16 @@ def validate_rows(rows: Iterable[dict]) -> List[RowError]:
 
         if not exam:
             errors.append(RowError(idx, "exam 不能为空"))
-        elif exam not in {"zikao", "pets"}:
-            errors.append(RowError(idx, "exam 必须是 zikao 或 pets"))
+        elif exam not in {"shed", "pets"}:
+            errors.append(RowError(idx, "exam 必须是 shed（自考）或 pets"))
 
         if year and not _is_int(year):
             errors.append(RowError(idx, "year 必须是整数或留空"))
         if month and (not _is_int(month) or not (1 <= int(month) <= 12)):
             errors.append(RowError(idx, "month 必须是 1-12 的整数或留空"))
 
-        if exam == "zikao" and not subject:
-            errors.append(RowError(idx, "zikao 记录必须填写 subject（如 english-2）"))
+        if exam == "shed" and not subject:
+            errors.append(RowError(idx, "shed（自考）记录必须填写 subject（如 english-2）"))
         if exam == "pets" and not level:
             errors.append(RowError(idx, "pets 记录必须填写 level（如 PETS-2）"))
 
@@ -80,9 +80,14 @@ def validate_rows(rows: Iterable[dict]) -> List[RowError]:
                 if not os.path.exists(normalized):
                     errors.append(RowError(idx, f"file_path 不存在：{file_path}"))
 
-        key = (exam, subject, level, year, month)
+        key = (exam, subject, level, year, month, file_path)
         if key in seen_keys:
-            errors.append(RowError(idx, "疑似重复记录（exam/subject/level/year/month 相同）"))
+            errors.append(
+                RowError(
+                    idx,
+                    "疑似重复记录（exam/subject/level/year/month/file_path 相同）",
+                )
+            )
         else:
             seen_keys.add(key)
 

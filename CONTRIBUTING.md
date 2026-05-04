@@ -27,9 +27,9 @@ python3 scripts/validate_index.py
 
 ## 索引字段说明（`index/papers.csv`）
 
-- `exam`: `zikao` / `pets`
+- `exam`: `shed`（自考，目录缩写 **SHED**）/ `pets`
 - `subject`: 如 `english-2`（PETS 可留空）
-- `level`: PETS 等级，如 `PETS-2`（自考可留空）
+- `level`: PETS 等级，如 `PETS-2`（`shed` 可留空）
 - `year`/`month`: 数字（month 建议两位）
 - `source_url`: 权威来源链接（强烈推荐）
 - `license`: 若上传文件，注明许可/授权信息
